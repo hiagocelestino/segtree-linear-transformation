@@ -58,24 +58,15 @@ Node SegTree::query(int int_left, int int_right, int p, int left, int right) {
     return multiplication(node_left, node_right);
 }
 
-void SegTree::applyTransform(Node node, int x, int y) {
+void SegTree::applyTransform(Node node, unsigned long long int x, unsigned long long int y) {
     // A = [[a(0,0) b(0,1)],[c(1,0) d(1,1)]]
     // b = [x y]
     // Axb = [a*x + y*b, cx + dy]
-    unsigned long int new_x = (node.getMatrix()[0][0] * x + node.getMatrix()[0][1] * y) % MOD;
-    unsigned long int new_y = (node.getMatrix()[1][0] * x + node.getMatrix()[1][1] * y) % MOD;
+    unsigned long long int new_x = ((node.getMatrix()[0][0] * x) + (node.getMatrix()[0][1] * y)) % MOD;
+    unsigned long long int new_y = ((node.getMatrix()[1][0] * x) + (node.getMatrix()[1][1] * y)) % MOD;
 
     cout << new_x << " " << new_y << endl;
 }
-
-// int query(int a, int b, int p, int l, int r) {
-// if (b < l or r < a) return INF;
-// if (a <= l and r <= b) return seg[p];
-// int m = (l+r)/2;
-// return min(query(a, b, 2*p, l, m), query(a, b, 2*p+1, m+1, r));
-// }
-// 
-// cout << query(a, b, 1, 0, n-1) << endl;
 
 void SegTree::printTree() {
     for(int i = 0; i < num_nodes; i++) {

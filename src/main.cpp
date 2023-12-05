@@ -17,14 +17,15 @@ int main() {
 
         if (option == 'u') {
             cin >> instant;
-            unsigned long int a00, a01, a10, a11;
+            unsigned long long int a00, a01, a10, a11;
             cin >> a00 >> a01;
             cin >> a10 >> a11;
             
             node = Node(a00, a01, a10, a11);
             segTree->update(instant, node, 1, 0, qtd_tempos - 1);
         } else if(option == 'q') {
-            int interval_start, interval_end, x, y;
+            int interval_start, interval_end;
+            unsigned long long int x, y;
             cin >> interval_start >> interval_end >> x >> y;
 
             node = segTree->query(interval_start, interval_end, 1, 0, qtd_tempos - 1);
@@ -33,6 +34,6 @@ int main() {
             throw invalid_argument("Invalid Argument");
         }
     }
-    // segTree->printTree();
+
     return 0;
 }
