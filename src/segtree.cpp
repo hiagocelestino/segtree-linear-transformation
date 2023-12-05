@@ -11,8 +11,11 @@ SegTree::~SegTree() {
    delete[] _nodes;
 }
 
-Node SegTree::build(int left, int right) {
-    if (left == right) return  _nodes[left] = Node();
+void SegTree::build(int left, int right) {
+    if (left == right) {
+        _nodes[left] = Node();
+        return;
+    }
 
     int median = (left + right) / 2;
 

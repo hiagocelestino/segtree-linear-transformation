@@ -7,7 +7,7 @@ class SegTree{
     public:
         SegTree(int qtd_instantes);
         ~SegTree();
-        Node build(int left, int right);
+        void build(int left, int right);
         Node query(int int_left, int int_right, int X, int left, int right);
         Node update(int instant, Node new_matrix, int X, int left, int right);
         void applyTransform(Node node, unsigned long long x, unsigned long long y);
