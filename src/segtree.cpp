@@ -2,7 +2,7 @@
 using namespace std;
 
 SegTree::SegTree(int num_instantes) {
-    num_nodes = num_instantes*2 - 1;
+    num_nodes = 4*num_instantes;
     _nodes = new Node[num_nodes];
     build(0, num_instantes - 1);
 }
@@ -62,8 +62,8 @@ void SegTree::applyTransform(Node node, unsigned long long int x, unsigned long 
     // A = [[a(0,0) b(0,1)],[c(1,0) d(1,1)]]
     // b = [x y]
     // Axb = [a*x + y*b, cx + dy]
-    unsigned long long int new_x = ((node.getMatrix()[0][0] * x) + (node.getMatrix()[0][1] * y)) % MOD;
-    unsigned long long int new_y = ((node.getMatrix()[1][0] * x) + (node.getMatrix()[1][1] * y)) % MOD;
+    unsigned long long int new_x = (node.getMatrix()[0][0] * x + node.getMatrix()[0][1] * y) % MOD;
+    unsigned long long int new_y = (node.getMatrix()[1][0] * x + node.getMatrix()[1][1] * y) % MOD;
 
     cout << new_x << " " << new_y << endl;
 }
